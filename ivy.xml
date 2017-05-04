@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0">
+	<info organisation="com.pyatakha" module="MongoDbBlog" />
+	
+	<configurations>
+        <conf name="compile" description="Required to compile application"/>
+    </configurations>
+    
+	<dependencies>
+		<dependency org="org.mongodb" name="mongo-java-driver" rev="3.2.2" conf="compile->default"/>
+		<dependency org="com.sparkjava" name="spark-core" rev="1.1.1" conf="compile->default"/>
+		<dependency org="org.freemarker" name="freemarker" rev="2.3.19" conf="compile->default"/>
+		<dependency org="org.apache.commons" name="commons-lang3" rev="3.1" conf="compile->default"/>
+		<dependency org="commons-codec" name="commons-codec" rev="1.7" conf="compile->default"/>
+	</dependencies>
+</ivy-module>

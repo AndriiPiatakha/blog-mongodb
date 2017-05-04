@@ -43,6 +43,14 @@
 	<!-- Defining classpaths                                                    -->
 	<!-- ====================================================================== -->
 
+	<path id="compile.classpath">
+		<fileset dir="lib" includes="*.jar" />
+	</path>
+	<path id="run.classpath">
+		<path refid="compile.classpath" />
+		<pathelement location="${maven.build.dir}/${maven.build.finalName}.jar" />
+	</path>
+
 	<!-- ivy start -->
 	<target name="resolve" depends="ivy" description="retrieve dependencies with ivy">
 		<echo message="Getting dependencies..." />
@@ -140,6 +148,11 @@
 
 	<target name="package" depends="compile,test" description="Package the application">
 		<jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" compress="true" index="false" basedir="${maven.build.outputDir}" excludes="**/package.html" />
+	</target>
+
+	<target name="java-run" depends="jar" description="Execute jar">
+		<echo>running the program</echo>
+		<java classname="course.BlogController" classpathref="run.classpath" fork="true"/>
 	</target>
 
 	<!-- ====================================================================== -->
